@@ -1,4 +1,4 @@
-#include<Windows.h>
+п»ї#include<Windows.h>
 #include<iostream>
 #pragma comment(lib,"Winmm.lib")
 #include<mmsystem.h>
@@ -8,31 +8,31 @@
 
 using namespace std;
 
-/// Настройки меню
+/// РќР°СЃС‚СЂРѕР№РєРё РјРµРЅСЋ
 bool menu = true;
 bool game = false;
 
-/// Здоровье
+/// Р—РґРѕСЂРѕРІСЊРµ
 int health = 10;
 
-/// Статистика
+/// РЎС‚Р°С‚РёСЃС‚РёРєР°
 int score = 0;
 int asteroid = 0;
 int torpedo = 0;
 int enemy = 0;
 
-/// Космос
+/// РљРѕСЃРјРѕСЃ
 const int row = 50;
 const int col = 90;
 char space[row][col];
 char vacuum = ' ';
 
-/// Космический корабль
+/// РљРѕСЃРјРёС‡РµСЃРєРёР№ РєРѕСЂР°Р±Р»СЊ
 char spaceship = '&';
 int spaceshipRow = 25;
 int spaceshipCol = 35;
 
-/// Снаряд
+/// РЎРЅР°СЂСЏРґ
 const int projectileCount = 15;
 int index = 0;
 int magazine = 15;
@@ -45,7 +45,7 @@ struct Projectile
 };
 Projectile* P_projectile;
 
-/// Астероид
+/// РђСЃС‚РµСЂРѕРёРґ
 const int asteroidCount = 30;
 struct Asteroid
 {
@@ -56,7 +56,7 @@ struct Asteroid
 };
 Asteroid* P_asteroid;
 
-/// Торпеда
+/// РўРѕСЂРїРµРґР°
 const int torpedoCount = 25;
 struct Torpedo
 {
@@ -67,7 +67,7 @@ struct Torpedo
 };
 Torpedo* P_torpedo;
 
-/// Вражеский корабль
+/// Р’СЂР°Р¶РµСЃРєРёР№ РєРѕСЂР°Р±Р»СЊ
 const int enemyCount = 20;
 struct Enemy
 {
@@ -79,7 +79,7 @@ struct Enemy
 };
 Enemy* P_enemy;
 
-/// Снаряд врага
+/// РЎРЅР°СЂСЏРґ РІСЂР°РіР°
 const int missileCount = enemyCount;
 struct Missile
 {
@@ -90,7 +90,7 @@ struct Missile
 };
 Missile* P_missile;
 
-/// Столкновение астероида
+/// РЎС‚РѕР»РєРЅРѕРІРµРЅРёРµ Р°СЃС‚РµСЂРѕРёРґР°
 void CollisionAsteroid(Asteroid* P_asteroid, Projectile* P_projectile)
 {
 	for (int i = 0; i < asteroidCount; i++)
@@ -126,7 +126,7 @@ void CollisionAsteroid(Asteroid* P_asteroid, Projectile* P_projectile)
 	}
 }
 
-/// Столкновение торпеды
+/// РЎС‚РѕР»РєРЅРѕРІРµРЅРёРµ С‚РѕСЂРїРµРґС‹
 void CollisionTorpedo(Torpedo* P_torpedo, Projectile* P_projectile)
 {
 	for (int i = 0; i < torpedoCount; i++)
@@ -162,7 +162,7 @@ void CollisionTorpedo(Torpedo* P_torpedo, Projectile* P_projectile)
 	}
 }
 
-/// Столкновение с врагом
+/// РЎС‚РѕР»РєРЅРѕРІРµРЅРёРµ СЃ РІСЂР°РіРѕРј
 void CollisionEnemy(Enemy* P_enemy, Projectile* P_projectile)
 {
 	for (int i = 0; i < enemyCount; i++)
@@ -198,7 +198,7 @@ void CollisionEnemy(Enemy* P_enemy, Projectile* P_projectile)
 	}
 }
 
-/// Столкновение со снарядом врага
+/// РЎС‚РѕР»РєРЅРѕРІРµРЅРёРµ СЃРѕ СЃРЅР°СЂСЏРґРѕРј РІСЂР°РіР°
 void CollisionMissile(Missile* P_missile)
 {
 	for (int i = 0; i < missileCount; i++)
@@ -214,7 +214,7 @@ void CollisionMissile(Missile* P_missile)
 	}
 }
 
-/// Столкновение
+/// РЎС‚РѕР»РєРЅРѕРІРµРЅРёРµ
 void Collision()
 {
 	CollisionAsteroid(P_asteroid, P_projectile);
@@ -223,7 +223,7 @@ void Collision()
 	CollisionMissile(P_missile);
 }
 
-/// Слздание снаряда врага
+/// РЎР»Р·РґР°РЅРёРµ СЃРЅР°СЂСЏРґР° РІСЂР°РіР°
 void SpawnMissile(Missile* P_missile)
 {
 	for (int i = 0; i < missileCount; i++)
@@ -238,7 +238,7 @@ void SpawnMissile(Missile* P_missile)
 	}
 }
 
-/// Показ снаряда врага
+/// РџРѕРєР°Р· СЃРЅР°СЂСЏРґР° РІСЂР°РіР°
 void InputMissile(Missile* P_missile)
 {
 	for (int i = 0; i < missileCount; i++)
@@ -250,7 +250,7 @@ void InputMissile(Missile* P_missile)
 	}
 }
 
-/// Движение снаряда врага
+/// Р”РІРёР¶РµРЅРёРµ СЃРЅР°СЂСЏРґР° РІСЂР°РіР°
 void MissileMovement(Missile* P_missile)
 {
 	for (int i = 0; i < missileCount; i++)
@@ -267,7 +267,7 @@ void MissileMovement(Missile* P_missile)
 	Collision();
 }
 
-/// Создание вражеского корабля
+/// РЎРѕР·РґР°РЅРёРµ РІСЂР°Р¶РµСЃРєРѕРіРѕ РєРѕСЂР°Р±Р»СЏ
 void SpawnEnemy(Enemy* P_enemy)
 {
 	for (int i = 0; i < enemyCount; i++)
@@ -306,7 +306,7 @@ void CheckRandomEnemy(Enemy* P_enemy)
 	}
 }
 
-/// Показ вражеского корабля
+/// РџРѕРєР°Р· РІСЂР°Р¶РµСЃРєРѕРіРѕ РєРѕСЂР°Р±Р»СЏ
 void InputEnemy(Enemy* P_enemy)
 {
 	for (int i = 0; i < enemyCount; i++)
@@ -318,7 +318,7 @@ void InputEnemy(Enemy* P_enemy)
 	}
 }
 
-/// Движение вражеского корабля
+/// Р”РІРёР¶РµРЅРёРµ РІСЂР°Р¶РµСЃРєРѕРіРѕ РєРѕСЂР°Р±Р»СЏ
 void EnemyMovement(Enemy* P_enemy)
 {
 	for (int i = 0; i < enemyCount; i++)
@@ -356,7 +356,7 @@ void EnemyMovement(Enemy* P_enemy)
 	Collision();
 }
 
-/// Создание торпеды
+/// РЎРѕР·РґР°РЅРёРµ С‚РѕСЂРїРµРґС‹
 void SpawnTorpedo(Torpedo* P_torpedo)
 {
 	for (int i = 0; i < torpedoCount; i++)
@@ -386,7 +386,7 @@ void CheckRandomTorpedo(Torpedo* P_torpedo)
 	}
 }
 
-/// Показ торпед
+/// РџРѕРєР°Р· С‚РѕСЂРїРµРґ
 void InputTorpedo(Torpedo* P_torpedo)
 {
 	for (int i = 0; i < torpedoCount; i++)
@@ -398,7 +398,7 @@ void InputTorpedo(Torpedo* P_torpedo)
 	}
 }
 
-/// Движение торпед
+/// Р”РІРёР¶РµРЅРёРµ С‚РѕСЂРїРµРґ
 void TorpedoMovement(Torpedo* P_torpedo)
 {
 	for (int i = 0; i < torpedoCount; i++)
@@ -415,7 +415,7 @@ void TorpedoMovement(Torpedo* P_torpedo)
 	Collision();
 }
 
-/// Создание астероидов
+/// РЎРѕР·РґР°РЅРёРµ Р°СЃС‚РµСЂРѕРёРґРѕРІ
 void SpawnAsteroids(Asteroid* P_asteroid)
 {
 	for (int i = 0; i < asteroidCount; i++)
@@ -445,7 +445,7 @@ void CheckRandomAsteroid(Asteroid* P_asteroid)
 	}
 }
 
-/// Показ астероидов
+/// РџРѕРєР°Р· Р°СЃС‚РµСЂРѕРёРґРѕРІ
 void InputAsteroids(Asteroid* P_asteroid)
 {
 	for (int i = 0; i < asteroidCount; i++)
@@ -457,7 +457,7 @@ void InputAsteroids(Asteroid* P_asteroid)
 	}
 }
 
-/// Движение астероидов
+/// Р”РІРёР¶РµРЅРёРµ Р°СЃС‚РµСЂРѕРёРґРѕРІ
 void AsteroidMovement(Asteroid* P_asteroid)
 {
 	for (int i = 0; i < asteroidCount; i++)
@@ -474,7 +474,7 @@ void AsteroidMovement(Asteroid* P_asteroid)
 	Collision();
 }
 
-/// Проверка случайностей
+/// РџСЂРѕРІРµСЂРєР° СЃР»СѓС‡Р°Р№РЅРѕСЃС‚РµР№
 void CheckRandom(Asteroid* P_asteroid, Torpedo* P_torpedo, Enemy* P_enemy)
 {
 	CheckRandomAsteroid(P_asteroid);
@@ -484,7 +484,7 @@ void CheckRandom(Asteroid* P_asteroid, Torpedo* P_torpedo, Enemy* P_enemy)
 
 
 
-/// Выстрел
+/// Р’С‹СЃС‚СЂРµР»
 void Shot(Projectile* P_projectile)
 {
 	if (index != 15)
@@ -497,7 +497,7 @@ void Shot(Projectile* P_projectile)
 	}
 }
 
-/// Показ снаряда
+/// РџРѕРєР°Р· СЃРЅР°СЂСЏРґР°
 void InputProjectile(Projectile* P_projectile)
 {
 	for (int i = 0; i < projectileCount; i++)
@@ -509,7 +509,7 @@ void InputProjectile(Projectile* P_projectile)
 	}
 }
 
-/// Движение снаряда
+/// Р”РІРёР¶РµРЅРёРµ СЃРЅР°СЂСЏРґР°
 void ProjectileMovement(Projectile* P_projectile)
 {
 	for (int i = 0; i < projectileCount; i++)
@@ -537,7 +537,7 @@ void ProjectileMovement(Projectile* P_projectile)
 
 
 
-///Настройки по умолчанию
+///РќР°СЃС‚СЂРѕР№РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 void DefaultSettings()
 {
 	for (int i = 0; i < projectileCount; i++)
@@ -586,7 +586,7 @@ void DefaultSettings()
 	enemy = 0;
 }
 
-/// Создание космоса
+/// РЎРѕР·РґР°РЅРёРµ РєРѕСЃРјРѕСЃР°
 void createSpace()
 {
 	for (int i = 0; i < row; i++)
@@ -599,13 +599,13 @@ void createSpace()
 	Collision();
 }
 
-/// Инициализация корабля
+/// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕСЂР°Р±Р»СЏ
 void SpawnSpaceship()
 {
 	space[spaceshipRow][spaceshipCol] = spaceship;
 }
 
-/// Показ космоса
+/// РџРѕРєР°Р· РєРѕСЃРјРѕСЃР°
 void showSpace()
 {
 	cout << "\n\n\n\n\n" << endl;
@@ -622,7 +622,7 @@ void showSpace()
 	system("cls");
 }
 
-/// Управление кораблем
+/// РЈРїСЂР°РІР»РµРЅРёРµ РєРѕСЂР°Р±Р»РµРј
 void spaceshipControl()
 {
 	if (_kbhit())
@@ -666,7 +666,7 @@ void spaceshipControl()
 
 
 
-/// Проверка конца игры
+/// РџСЂРѕРІРµСЂРєР° РєРѕРЅС†Р° РёРіСЂС‹
 void GameOver()
 {
 	if (health == 0)
